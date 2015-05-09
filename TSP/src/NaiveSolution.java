@@ -6,9 +6,11 @@
  */
 public class NaiveSolution {
 
+
 	private final String EXAMPLE_MAP = "Assignment_Example.txt";
 	private final String ZIM_MAP = "Zim_Map.txt";
 	private final String EURO_MAP = "Europe_map.txt";
+	private final String SA_MAP = "SA_Vacations.txt";
 	
 	//TODO finish text variables for the maps to be used
 	
