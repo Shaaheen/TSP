@@ -21,7 +21,7 @@ public class TSP_UserInterface {
 		do{
 		String mapChoice = sc.nextLine();
 		
-		// i know there is a shorter way to this but that comes later bro
+		// i know there is a shorter way to this but that comes later bro. Alright bro - S
 		if (mapChoice.equalsIgnoreCase("a") || mapChoice.equalsIgnoreCase("b") || mapChoice.equalsIgnoreCase("c") || mapChoice.equalsIgnoreCase("d") || mapChoice.equalsIgnoreCase("e") ||mapChoice.equalsIgnoreCase("f")){
 			System.out.println("\nPlease select an algorithm to use:"
 				+ "\n1: The Naive Solution."
