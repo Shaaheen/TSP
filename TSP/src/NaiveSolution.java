@@ -18,8 +18,6 @@ public class NaiveSolution {
 	private final String KRUGER_MAP = "Kruger.txt";
 	private final String NAMAQUALAND_MAP = "Namaqualand.txt";
 
-	private String start;
-	
 	//TODO finish text variables for the maps to be used
 	
 	private String map;
@@ -34,16 +32,25 @@ public class NaiveSolution {
 	 */
 	
 	private void setStartingPoint() {
-		start = "";
+		String start = "";
 		Scanner user_input = new Scanner(System.in);
+		//Checks if entered start position is valid
 		while (!Arrays.asList(mapLetters).contains(start)) {
 			System.out.println("Enter the desired Start Point: ");
 			start = user_input.nextLine();
 		}
 
-
+		calculatePath(start);
 		// TODO this class is to be implemented
 		
+	}
+
+	/**
+	 * Method to calculate the shortest path around all cities
+	 * @param start
+	 */
+	private void calculatePath(String start) {
+
 	}
 
 	/**
