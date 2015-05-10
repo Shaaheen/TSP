@@ -52,7 +52,7 @@ public class NaiveSolution {
 	private void calculatePath(String start) {
 
 	}
-
+//
 	/**
 	 * This method sets the map to be used
 	 * 
