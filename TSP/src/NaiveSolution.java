@@ -141,6 +141,7 @@ class Graph{
 	public void naiveSolution(String start){
 		double fullDistance = 0.0;
 		Vertex startPostion = root;
+		PathTree paths = new PathTree(startPostion);
 		Queue<Vertex> vertices = new LinkedList<Vertex>();
 		vertices.add(startPostion);
 
@@ -151,6 +152,7 @@ class Graph{
 				Vertex edgeVertex = edges.linkedTo;
 				if (!edgeVertex.colour.equals("Black")){
 					fullDistance = fullDistance + edges.costTo;
+					paths.insert(currPosition,edgeVertex,edges.costTo);
 					currPosition.exploring();
 					vertices.add(edgeVertex);
 				}
@@ -159,6 +161,12 @@ class Graph{
 		}
 		System.out.println(fullDistance);
 	}
+
+}
+
+class Path{
+	Vertex root;
+	int dist;
 
 }
 
