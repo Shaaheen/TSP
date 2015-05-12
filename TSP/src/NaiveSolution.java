@@ -144,7 +144,7 @@ class Graph{
 		PathTree paths = new PathTree(startPostion);
 		Queue<Vertex> vertices = new LinkedList<Vertex>();
 		vertices.add(startPostion);
-
+		startPostion.explored();
 		while (!vertices.isEmpty()){
 			Vertex currPosition = vertices.remove();
 
@@ -153,11 +153,15 @@ class Graph{
 				if (!edgeVertex.colour.equals("Black")){
 					fullDistance = fullDistance + edges.costTo;
 					paths.insert(currPosition,edgeVertex,edges.costTo);
-					currPosition.exploring();
-					vertices.add(edgeVertex);
+					//So only adds to list if has't been explored
+					if (edgeVertex.colour.equals("White")){
+						vertices.add(edgeVertex);
+						edgeVertex.exploring();
+					}
+
 				}
 			}
-			currPosition.explored();
+			//currPosition.explored();
 		}
 		System.out.println(fullDistance);
 	}
