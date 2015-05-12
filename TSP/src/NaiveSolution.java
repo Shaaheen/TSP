@@ -1,4 +1,7 @@
+
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -78,3 +81,55 @@ public class NaiveSolution {
 	}
 
 }
+/*
+* *An edge in the graph - the cost and link from one node to another
+*/
+class Edge{
+	public Vertex linkedTo;
+	public double costTo;
+
+	public Edge(Vertex link,double cost){
+		this.linkedTo = link;
+		this.costTo = cost;
+	}
+}
+/*
+*The actual Node which contains its name and links to adjacent
+* nodes
+*White = undiscoverd ; Grey = not all adjacencies discovered
+* Black = Fully explored
+*/
+
+class Vertex{
+	public String nodeName;
+	public List<Edge> adjacentVert;
+	public String colour;
+
+	public Vertex(String name){
+		this.nodeName = name;
+		adjacentVert = new LinkedList<Edge>();
+		colour = "White";
+	}
+
+	public void exploring(){
+		colour = "Grey";
+	}
+
+	public void explored(){
+		colour = "Black";
+	}
+
+}
+
+class Graph{
+	Graph(){
+		Vertex root = new Vertex("A");
+		Vertex adjB = new Vertex("B");
+		Vertex adjC = new Vertex("C");
+		root.adjacentVert.add(new Edge(adjB,20));
+		root.adjacentVert.add(new Edge(adjC,10));
+
+	}
+
+}
+
