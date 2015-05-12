@@ -1,8 +1,5 @@
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Class to calculate the shortest Hamiltonian cycle using the Nearest Neighbour algorithm
@@ -53,7 +50,8 @@ public class NaiveSolution {
 	 * @param start
 	 */
 	private void calculatePath(String start) {
-
+		Graph naive = new Graph();
+		naive.naiveSolution(start);
 	}
 //
 	/**
@@ -122,13 +120,44 @@ class Vertex{
 }
 
 class Graph{
+
+	Vertex root = new Vertex("A");
+	Vertex adjB = new Vertex("B");
+	Vertex adjC = new Vertex("C");
+
+
+
 	Graph(){
-		Vertex root = new Vertex("A");
-		Vertex adjB = new Vertex("B");
-		Vertex adjC = new Vertex("C");
 		root.adjacentVert.add(new Edge(adjB,20));
 		root.adjacentVert.add(new Edge(adjC,10));
 
+		adjC.adjacentVert.add(new Edge(root,10));
+		adjC.adjacentVert.add(new Edge(adjB,5));
+
+		adjB.adjacentVert.add(new Edge(root,20));
+		adjB.adjacentVert.add(new Edge(adjC,5));
+	}
+
+	public void naiveSolution(String start){
+		double fullDistance = 0.0;
+		Vertex startPostion = root;
+		Queue<Vertex> vertices = new LinkedList<Vertex>();
+		vertices.add(startPostion);
+
+		while (!vertices.isEmpty()){
+			Vertex currPosition = vertices.remove();
+
+			for (Edge edges: currPosition.adjacentVert){
+				Vertex edgeVertex = edges.linkedTo;
+				if (!edgeVertex.colour.equals("Black")){
+					fullDistance = fullDistance + edges.costTo;
+					currPosition.exploring();
+					vertices.add(edgeVertex);
+				}
+			}
+			currPosition.explored();
+		}
+		System.out.println(fullDistance);
 	}
 
 }
