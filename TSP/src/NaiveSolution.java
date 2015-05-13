@@ -141,7 +141,7 @@ class Graph{
 		adjB.adjacentVert.add(new Edge(adjD,25));
 
 		adjD.adjacentVert.add(new Edge(root,20));
-		adjD.adjacentVert.add(new Edge(adjC,30));
+		adjD.adjacentVert.add(new Edge(adjC,30));//
 		adjD.adjacentVert.add(new Edge(adjB,25));
 	}
 
