@@ -124,18 +124,25 @@ class Graph{
 	Vertex root = new Vertex("A");
 	Vertex adjB = new Vertex("B");
 	Vertex adjC = new Vertex("C");
-
+	Vertex adjD = new Vertex("D");
 
 
 	Graph(){
-		root.adjacentVert.add(new Edge(adjB,20));
-		root.adjacentVert.add(new Edge(adjC,10));
+		root.adjacentVert.add(new Edge(adjB,10));
+		root.adjacentVert.add(new Edge(adjC,15));
+		root.adjacentVert.add(new Edge(adjD,20));
 
-		adjC.adjacentVert.add(new Edge(root,10));
-		adjC.adjacentVert.add(new Edge(adjB,5));
+		adjC.adjacentVert.add(new Edge(root,15));
+		adjC.adjacentVert.add(new Edge(adjB,35));
+		adjC.adjacentVert.add(new Edge(adjD,30));
 
-		adjB.adjacentVert.add(new Edge(root,20));
-		adjB.adjacentVert.add(new Edge(adjC,5));
+		adjB.adjacentVert.add(new Edge(root,10));
+		adjB.adjacentVert.add(new Edge(adjC,35));
+		adjB.adjacentVert.add(new Edge(adjD,25));
+
+		adjD.adjacentVert.add(new Edge(root,20));
+		adjD.adjacentVert.add(new Edge(adjC,30));
+		adjD.adjacentVert.add(new Edge(adjB,25));
 	}
 
 	public void naiveSolution(String start){
@@ -152,25 +159,19 @@ class Graph{
 				Vertex edgeVertex = edges.linkedTo;
 				if (!edgeVertex.colour.equals("Black")){
 					fullDistance = fullDistance + edges.costTo;
-					paths.insert(currPosition,edgeVertex,edges.costTo);
+
 					//So only adds to list if has't been explored
 					if (edgeVertex.colour.equals("White")){
+						paths.insert(currPosition,edgeVertex,edges.costTo);
 						vertices.add(edgeVertex);
 						edgeVertex.exploring();
 					}
 
 				}
 			}
-			//currPosition.explored();
 		}
+		paths.complete();
 		System.out.println(fullDistance);
 	}
 
 }
-
-class Path{
-	Vertex root;
-	int dist;
-
-}
-
